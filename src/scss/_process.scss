@@ -1,0 +1,145 @@
+/*
+<ul class="steps">
+                    <li class="steps__block">
+                        <div class="steps__text">1</div>
+                    </li>
+                    <li class="steps__block steps__block--size">
+                        <div class="steps__photo"></div>
+                    </li>
+                    <li class="steps__block">
+                        <div class="steps__text">2</div>
+                    </li>
+                    <li class="steps__block">
+                        <div class="steps__text">3</div>
+                    </li>
+                    <li class="steps__block steps__block--size">
+                        <div class="steps__text">4</div>
+                    </li>
+                </ul>
+*/
+%process-grid__block { 
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    
+    &,
+    &::before,
+    &::after {
+        width: 173.2px;
+        height: 100px;
+        // border-top: $bwStepsMain solid transparent;
+        // border-bottom: $bwStepsMain solid transparent;
+        border-left: $bwStepsMain solid $colorTextDescription;
+        border-right: $bwStepsMain solid $colorTextDescription;
+    }
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        // z-index: -1;
+    }
+    &::before {transform: rotate(-60deg);}
+    &::after {transform: rotate(60deg);}
+}
+/* process */
+.page {
+
+    &--bg-process {
+        background-color: $colorMain;
+    }
+}
+.process {
+    padding: 45px 0  82px 0;
+
+    &__caption {
+        @extend %caption;
+    }
+    &__caption-word {
+        @extend %color-word;
+    }
+    &__description {
+        @extend %description;
+        margin: 0 auto 55px auto;
+    }
+}
+.process-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    min-height: 550px;
+
+    &__block {
+        @extend %process-grid__block;
+
+        &--size {
+            &, &::before, &::after {width: 260px; height: 150px;}
+        }
+        &:first-child {
+            top: 145px;
+            left: 72px;
+            border-right: $bwStepsSecondary solid $colorSecondary;
+            
+            &::before, &::after {top: 0px; left: -1px;}
+            &::before {border-right: $bwStepsSecondary solid $colorSecondary;}
+            &::after {border-left: $bwStepsSecondary solid $colorSecondary;}
+        }    
+        &:nth-child(2) {
+            top: 207px;
+            left: 345px;
+            border-left: $bwStepsSecondary solid $colorSecondary;
+            
+            &::before, &::after {top: 0px; left: -4px;}
+            &::before {background-color: $colorMain;}
+            &::after {border-left: $bwStepsSecondary solid $colorSecondary;}
+        }
+        &:nth-child(3) {
+            top: 58px;
+            left: 431px;
+            border-left: $bwStepsSecondary solid $colorSecondary;
+            border-right: $bwStepsSecondary solid $colorSecondary;
+            
+            &::before, &::after {top: 0px; left: -4px;}
+            &::before {border-right: $bwStepsSecondary solid $colorSecondary;}
+            &::after {border-left: $bwStepsSecondary solid $colorSecondary;}
+        }
+        &:nth-child(4) {
+            top: 157px;
+            left: 603px;
+            border-right: $bwStepsSecondary solid $colorSecondary;
+            
+            &::before, &::after {top: 0px; left: -1px;}
+            &::before {border-right: $bwStepsSecondary solid $colorSecondary;}
+            &::after {
+                border-right: $bwStepsSecondary solid $colorSecondary;
+                border-left: $bwStepsSecondary solid $colorSecondary;
+            }
+            
+        }
+        &:last-child {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 319px;
+            left: 115px;
+            z-index: 0;
+
+            &::before, &::after {top: 0px; left: -1px;}
+            &::before {border-right: $bwStepsSecondary solid $colorSecondary;}
+        }
+    }
+}
+.steps {
+    position: absolute;
+    
+    &--photo {
+        background-image: url(../images/process/photo1.jpg);
+        width: 258.5px;
+        height: 298px;
+        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        z-index: -2;
+    }
+}
